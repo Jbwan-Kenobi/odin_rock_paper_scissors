@@ -4,9 +4,9 @@ let computerScore = 0
 function getComputerChoice() {
     let a = Math.floor(Math.random() * 100) +1;
     let computerChoice = ""
-    if (a <= 33){
+    if (a <= 33) {
         computerChoice = "rock";
-    } else if (a > 33 && a <= 66){
+    } else if (a > 33 && a <= 66) {
         computerChoice = "paper";
     } else computerChoice = "scissors" 
     
@@ -42,24 +42,36 @@ function playRound(computerChoice, humanChoice) {
     return winner
 }
 
-const computer = getComputerChoice();
-const human = getHumanChoice();
+function playGame() {
+    for(let i = 1; i <= 5; i++) {
+        let computer = getComputerChoice();
+        let human = getHumanChoice();
+        let win = playRound(computer, human)
 
-let win = playRound(computer, human);
+            if(win == "computer") {
+                console.log("You lose! " + computer + " beats " + human)
+            } else if (win == "human"){
+                console.log("You win! " + human + " beats " + computer)
+            } else {
+                console.log("It's a draw: " + human + " matches " + computer)
+            }
+        
+            if(win == "computer"){
+                computerScore = computerScore + 1
+            } else if (win == "human") {
+                humanScore = humanScore +1
+            }
+        
+        console.log("Current score: You = " + humanScore + " Computer = " + computerScore)
+    }
+}
 
-if(win == "computer") {
-    console.log("You lose! " + computer + " beats " + human)
-} else if (win == "human"){
-    console.log("You win! " + human + " beats " + computer)
+console.log(playGame())
+
+if(computerScore > humanScore) {
+    alert("Computer Wins! " + computerScore + " - " + humanScore + " Unlucky Loser!");
+} else if(humanScore > computerScore) {
+    alert("Congratulations! You Win. " + humanScore + " - " + computerScore)
 } else {
-    console.log("It's a draw: " + human + " matches " + computer)
+    alert("It's a draw, " + computerScore + " - " + humanScore + " No winners this time, or did we both win?")
 }
-
-if(win == "computer"){
-    computerScore = computerScore + 1
-} else if(win == "human") {
-    humanScore = humanScore +1
-}
-
-console.log("Computer Score: " + computerScore)
-console.log("Human Score: " + humanScore)

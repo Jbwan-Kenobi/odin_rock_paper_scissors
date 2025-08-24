@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgrey;
+    justify-items: center;
+    font-size: 100px;
+}
+
+.block1 {
+    text-align: center;    
+}
+
+.buttons {
+    background-color: rgb(128, 128, 128);
+    margin: 25px;
+    padding: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    
+}
+
+button {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    margin: 10px;
+    font-size: 25px;
+}
+

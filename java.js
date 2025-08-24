@@ -1,3 +1,24 @@
+// Select all buttons inside the "buttons" div
+const buttons = document.querySelectorAll(".buttons button");
+
+// Loop through each button and attach event listeners
+buttons.forEach(button => {
+  // Change background color when hovered
+  button.addEventListener("mouseover", () => {
+    button.style.color = "blue";
+    button.style.borderColor = "blue";
+    button.style.borderWidth = "5px";
+  });
+
+  // Reset background color when mouse leaves
+  button.addEventListener("mouseout", () => {
+    button.style.color = "";
+    button.style.borderColor = "";
+    button.style.borderWidth = "";
+  });
+});
+
+
 let humanScore = 0
 let computerScore = 0
 
@@ -15,12 +36,18 @@ function getComputerChoice() {
 
 /*console.log(getComputerChoice())*/
 
-function getHumanChoice() {
+document.addEventListener('click', (e) => {
+    let elementId = e.target.id;
+    let humanChoice = elementId;
+    console.log(humanChoice)
+});
+
+/*function getHumanChoice() {
     let humanChoice = prompt("Make your move! Rock, Paper or Scissors");
     let lowerHumanChoice = humanChoice.toLowerCase();
 
     return lowerHumanChoice
-}
+}*/
 
 /*console.log(getHumanChoice())*/
 
@@ -42,7 +69,7 @@ function playRound(computerChoice, humanChoice) {
     return winner
 }
 
-function playGame() {
+/*function playGame() {
     for(let i = 1; i <= 5; i++) {
         let computer = getComputerChoice();
         let human = getHumanChoice();
@@ -66,7 +93,7 @@ function playGame() {
     }
 }
 
-console.log(playGame())
+console.log(playGame())*/
 
 if(computerScore > humanScore) {
     alert("Computer Wins! " + computerScore + " - " + humanScore + " Unlucky Loser!");

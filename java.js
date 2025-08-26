@@ -19,7 +19,7 @@ buttons.forEach(button => {
 });
 
 
-let humanScore = 0
+/*let humanScore = 0
 let computerScore = 0
 
 function getComputerChoice() {
@@ -34,13 +34,19 @@ function getComputerChoice() {
     return computerChoice
 }
 
-/*console.log(getComputerChoice())*/
+/*console.log(getComputerChoice())
 
+/*function getHumanChoice() {
+    let humanChoice = ""
 document.addEventListener('click', (e) => {
     let elementId = e.target.id;
     let humanChoice = elementId;
+
     console.log(humanChoice)
 });
+
+return humanChoice
+}
 
 /*function getHumanChoice() {
     let humanChoice = prompt("Make your move! Rock, Paper or Scissors");
@@ -50,6 +56,8 @@ document.addEventListener('click', (e) => {
 }*/
 
 /*console.log(getHumanChoice())*/
+
+/*while(humanScore !== 5 || computerScore !== 5) {
 
 function playRound(computerChoice, humanChoice) {
     let winner = ""
@@ -67,7 +75,8 @@ function playRound(computerChoice, humanChoice) {
         }
 
     return winner
-}
+
+};*/
 
 /*function playGame() {
     for(let i = 1; i <= 5; i++) {
@@ -93,7 +102,8 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-console.log(playGame())*/
+console.log(playGame())
+
 
 if(computerScore > humanScore) {
     alert("Computer Wins! " + computerScore + " - " + humanScore + " Unlucky Loser!");

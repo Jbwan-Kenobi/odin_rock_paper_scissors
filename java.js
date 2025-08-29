@@ -19,7 +19,7 @@ buttons.forEach(button => {
 });
 
 
-/*let humanScore = 0
+let humanScore = 0
 let computerScore = 0
 
 function getComputerChoice() {
@@ -34,9 +34,9 @@ function getComputerChoice() {
     return computerChoice
 }
 
-/*console.log(getComputerChoice())
+    console.log(getComputerChoice())
 
-/*function getHumanChoice() {
+/unction getHumanChoice() {
     let humanChoice = ""
 document.addEventListener('click', (e) => {
     let elementId = e.target.id;

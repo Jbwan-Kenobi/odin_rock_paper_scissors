@@ -21,7 +21,6 @@ buttons.forEach(button => {
 let playerScore = 0;
 let computerScore = 0;
 
-
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     const playerChoice = button.id; // "rock", "paper", or "scissors"
@@ -33,17 +32,89 @@ buttons.forEach(button => {
         }
         else if(result == "computer") {
             computerScore = computerScore + 1
+        };
+
+        if(playerScore > computerScore){
+            const playerScoreColor = document.getElementById("playerScore");
+            const computerScoreColor = document.getElementById("computerScore"); 
+            playerScoreColor.style.color = "green";
+            computerScoreColor.style.color = "red";
         }
+        else if(playerScore < computerScore){
+            const playerScoreColor = document.getElementById("playerScore");
+            const computerScoreColor = document.getElementById("computerScore"); 
+            playerScoreColor.style.color = "red";
+            computerScoreColor.style.color = "green";
+        }
+        else {
+            const playerScoreColor = document.getElementById("playerScore");
+            const computerScoreColor = document.getElementById("computerScore"); 
+            playerScoreColor.style.color = "orange";
+            computerScoreColor.style.color = "orange";
+        };
+  
+    const sect = document.querySelector("section");
+    const block1 = document.querySelector(".block1");
+    const choices = document.createElement("p");
+    choices.textContent = "Player chose: " + playerChoice + "." + " Computer chose: " + computerChoice + ".";
+    sect.appendChild(choices);
+
     document.getElementById("playerScore").innerHTML = playerScore;
     document.getElementById("computerScore").innerHTML = computerScore;
+
+    if(playerScore == 5) {
+        choices.textContent = "You Win!";
+        choices.style.color = "green";
+        block1.appendChild(choices);
+        sect.prepend(choices);
+    }
+    else if(computerScore == 5){
+        choices.textContent = "You loose!";
+        choices.style.color = "red";
+        block1.appendChild(choices);
+        sect.prepend(choices);
+    };
+
+    if (playerScore == 5 || computerScore == 5) {
+        buttons.forEach(button => {
+            button.disabled = true;
+        });
+
+        const playAgain = document.createElement("button");
+        playAgain.textContent = "Click to play again";
+        playAgain.style.height = "150px";
+        playAgain.style.width = "500px";
+        playAgain.style.backgroundColor = "green";
+        playAgain.style.color = "white";
+        sect.prepend(playAgain)
+        
+        playAgain.addEventListener("click", () => {
+            playerScore = 0;
+            computerScore = 0;
+
+            document.getElementById("playerScore").innerHTML = playerScore;
+            document.getElementById("computerScore").innerHTML = computerScore;
+
+            document.getElementById("playerScore").style.color = "";
+            document.getElementById("computerScore").style.color = "";
+
+            buttons.forEach(button => {
+                button.disabled = false;
+            });
+
+            playAgain.remove();
+            choices.remove();
+        });  
+    };
+
     console.log("Player:", playerChoice, " Computer:", computerChoice, " Winner:", result);
-    console.log("player score = "+ playerScore + " ComputerScore = " + computerScore)
+    //console.log("player score = "+ playerScore + " ComputerScore = " + computerScore)
+    return result + playerScore + computerScore;
   });
 });
 
 
 let computerChoice = "";
-//let playerChoice = "";
 
 function getComputerChoice() {
     let a = Math.floor(Math.random() * 100) +1;
@@ -56,8 +127,6 @@ function getComputerChoice() {
     
     return computerChoice
 };
-
-console.log("Computer Choice = " + getComputerChoice())
 
     function playRound(computerChoice, playerChoice) {
     let winner = ""

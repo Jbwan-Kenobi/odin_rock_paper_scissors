@@ -56,7 +56,13 @@ buttons.forEach(button => {
     const sect = document.querySelector("section");
     const block1 = document.querySelector(".block1");
     const choices = document.createElement("p");
-    choices.textContent = "Player chose: " + playerChoice + "." + " Computer chose: " + computerChoice + ".";
+    choices.setAttribute("id", "choices")
+
+        if (document.contains(document.getElementById("choices"))) {
+            document.getElementById("choices").remove();
+        }
+
+    choices.textContent = "Player chooses: " + playerChoice + "." + " Computer chooses: " + computerChoice + ".";
     sect.appendChild(choices);
 
     document.getElementById("playerScore").innerHTML = playerScore;
@@ -66,13 +72,11 @@ buttons.forEach(button => {
         choices.textContent = "You Win!";
         choices.style.color = "green";
         block1.appendChild(choices);
-        sect.prepend(choices);
     }
     else if(computerScore == 5){
-        choices.textContent = "You loose!";
+        choices.textContent = "You lose!";
         choices.style.color = "red";
         block1.appendChild(choices);
-        sect.prepend(choices);
     };
 
     if (playerScore == 5 || computerScore == 5) {
@@ -80,11 +84,18 @@ buttons.forEach(button => {
             button.disabled = true;
         });
 
+        buttons.forEach(button => {
+            button.addEventListener("mouseover", () => {
+            button.style.color = "";
+            button.style.borderColor = "";
+            button.style.borderWidth = "";
+            });
+        });
         const playAgain = document.createElement("button");
         playAgain.textContent = "Click to play again";
-        playAgain.style.height = "150px";
+        playAgain.style.height = "100px";
         playAgain.style.width = "500px";
-        playAgain.style.backgroundColor = "green";
+        playAgain.style.backgroundColor = "blue";
         playAgain.style.color = "white";
         sect.prepend(playAgain)
         
@@ -100,16 +111,20 @@ buttons.forEach(button => {
 
             buttons.forEach(button => {
                 button.disabled = false;
+                button.addEventListener("mouseover", () => {
+                button.style.color = "blue";
+                button.style.borderColor = "blue";
+                button.style.borderWidth = "5px";
+                });
             });
 
             playAgain.remove();
-            choices.remove();
+            block1.removeChild(choices)
         });  
     };
 
-    console.log("Player:", playerChoice, " Computer:", computerChoice, " Winner:", result);
-    //console.log("player score = "+ playerScore + " ComputerScore = " + computerScore)
     return result + playerScore + computerScore;
+    
   });
 });
 

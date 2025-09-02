@@ -124,7 +124,7 @@ buttons.forEach(button => {
     };
 
     return result + playerScore + computerScore;
-    
+
   });
 });
 
